@@ -7,19 +7,20 @@ import { useState } from 'react';
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
-  const showCartHandler = ()=>{
+  const showCartHandler = () => {
     setCartIsShown(true)
   }
-  const hideCartHandler = ()=>{
+  const hideCartHandler = () => {
     setCartIsShown(false)
   }
   return (
     <div >
-      <Cart/>
-    <Header/>
-    <main>
-      <Meals/>
-    </main>
+      {cartIsShown && <Cart onClose=
+        {hideCartHandler} />}
+      <Header showCartHandler={showCartHandler} />
+      <main>
+        <Meals />
+      </main>
     </div>
   );
 }
